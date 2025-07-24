@@ -7,7 +7,7 @@ const UploadHistory = () => {
   const fetchHistory = async () => {
     const token = localStorage.getItem('token');
     const res = await axios.get(
-      'https://excel-analytics-platform-esrh.onrender.com/api/upload/history',
+      'http://localhost:5000/api/upload/history',
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -20,7 +20,7 @@ const UploadHistory = () => {
   const handleDelete = async () => {
     const token = localStorage.getItem('token');
     await axios.delete(
-      'https://excel-analytics-platform-esrh.onrender.com/api/upload/delete',
+      'http://localhost:5000/api/upload/delete',
       {
         headers: {
           Authorization: `Bearer ${token}`,

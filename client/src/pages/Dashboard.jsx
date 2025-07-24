@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from 'axios'; // ✅ using default axios
 import { useNavigate, Link } from 'react-router-dom';
 import ExcelBarChart from '../components/ExcelBarChart';
 import ExcelPieChart from '../components/ExcelPieChart';
@@ -15,7 +15,7 @@ const Dashboard = () => {
   const [chartType, setChartType] = useState('bar');
   const [userEmail, setUserEmail] = useState('');
 
-  const BASE_URL = 'https://excel-analytics-platform-esrh.onrender.com';
+  const BASE_URL = 'http://localhost:5000'; // 🔁 Reverted to local backend
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -104,7 +104,6 @@ const Dashboard = () => {
 
       {/* Main Content */}
       <main className="flex-1 p-6">
-        {/* Top Bar */}
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-semibold">
             Welcome, <span className="text-blue-600">{userEmail}</span>!
@@ -117,7 +116,6 @@ const Dashboard = () => {
           </button>
         </div>
 
-        {/* Quick Summary */}
         <div className="mb-6">
           <h2 className="text-xl font-semibold mb-2">📋 Quick Summary</h2>
           <div className="bg-white p-4 rounded shadow w-48 text-center">
@@ -126,7 +124,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Upload Buttons */}
         <div className="bg-white p-4 rounded shadow mb-6 flex flex-wrap gap-4 items-center">
           <input
             type="file"

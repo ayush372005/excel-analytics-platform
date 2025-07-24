@@ -1,6 +1,6 @@
 // client/src/pages/MyFiles.jsx
 import React, { useEffect, useState } from 'react';
-import axios from '../api/axios'; // ✅ Use custom axios
+import axios from 'axios';
 
 const MyFiles = () => {
   const [records, setRecords] = useState([]);
@@ -9,7 +9,8 @@ const MyFiles = () => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('/excel/data', {
+       const res = await axios.get('http://localhost:5000/api/excel/data', {
+
           headers: { Authorization: `Bearer ${token}` },
         });
 

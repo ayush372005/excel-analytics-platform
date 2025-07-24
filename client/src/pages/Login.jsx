@@ -1,7 +1,7 @@
 // client/src/pages/Login.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../api/axios'; // ✅ use the custom axios instance
+import axios from 'axios'; // ✅ native axios
 
 const Login = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Login = () => {
     e.preventDefault();
     setError('');
     try {
-      const res = await axios.post('/auth/login', formData); // ✅ relative path
+      const res = await axios.post('http://localhost:5000/api/auth/login', formData); // ✅ full local URL
       const { token, role } = res.data;
 
       localStorage.setItem('token', token);

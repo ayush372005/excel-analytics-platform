@@ -13,7 +13,7 @@ const Upload = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.post('https://excel-analytics-platform-esrh.onrender.com/api/excel/upload', formData, {
+      const res = await axios.post('http://localhost:5000/api/excel/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
