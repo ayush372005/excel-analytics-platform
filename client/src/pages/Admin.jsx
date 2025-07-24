@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios'; // ✅ use custom axios instance
 
 const Admin = () => {
   const [users, setUsers] = useState([]);
@@ -8,7 +8,7 @@ const Admin = () => {
     const fetchUsersWithData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/api/admin/users-with-data', {
+        const res = await axios.get('/api/admin/users-with-data', {
           headers: { Authorization: `Bearer ${token}` },
         });
         setUsers(res.data);

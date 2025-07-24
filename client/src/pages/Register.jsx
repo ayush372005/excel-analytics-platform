@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../api/axios'; // ✅ use instance
+
 
 const Register = () => {
   const navigate = useNavigate();
@@ -15,7 +16,8 @@ const Register = () => {
     e.preventDefault();
     setError('');
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', formData);
+      const res = await axios.post('/api/auth/register', formData);
+
       localStorage.setItem('token', res.data.token);
       navigate('/dashboard');
     } catch (err) {

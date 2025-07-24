@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../api/axios';
+
 import { jwtDecode } from 'jwt-decode';
 
 const SavedAnalyses = () => {
@@ -18,7 +19,7 @@ const SavedAnalyses = () => {
   const fetchAnalyses = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/analyses', {
+const res = await axios.get('/api/analyses', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAnalyses(res.data);

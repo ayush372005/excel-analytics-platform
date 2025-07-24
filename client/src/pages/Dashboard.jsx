@@ -15,6 +15,8 @@ const Dashboard = () => {
   const [chartType, setChartType] = useState('bar');
   const [userEmail, setUserEmail] = useState('');
 
+  const BASE_URL = 'https://excel-analytics-platform-esrh.onrender.com';
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) return navigate('/login');
@@ -30,7 +32,7 @@ const Dashboard = () => {
   const fetchExcelData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get('http://localhost:5000/api/excel/data', {
+      const res = await axios.get(`${BASE_URL}/api/excel/data`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setExcelData(res.data);
@@ -55,7 +57,7 @@ const Dashboard = () => {
     formData.append('file', file);
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/excel/upload', formData, {
+      await axios.post(`${BASE_URL}/api/excel/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,
@@ -70,7 +72,7 @@ const Dashboard = () => {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete('http://localhost:5000/api/excel/delete', {
+      await axios.delete(`${BASE_URL}/api/excel/delete`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setExcelData([]);
